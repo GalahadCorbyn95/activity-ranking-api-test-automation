@@ -1,8 +1,23 @@
-import { Before, After, AfterAll, Status, ITestCaseHookParameter, setDefaultTimeout } from '@cucumber/cucumber';
+import * as fs from 'fs';
+import * as path from 'path';
+import { Before, BeforeAll, After, AfterAll, Status, ITestCaseHookParameter, setDefaultTimeout } from '@cucumber/cucumber';
 import { generateReport } from './report-generator';
 
 // API calls can take 10+ seconds due to Lambda cold starts and network latency
 setDefaultTimeout(30_000);
+
+const REPORTS_DIR = path.join(process.cwd(), 'reports');
+
+/**
+ * Before all scenarios: ensure the reports directory exists so Cucumber
+ * can write the JSON output file. This avoids requiring manual directory
+ * creation after a fresh clone.
+ */
+BeforeAll(function () {
+  if (!fs.existsSync(REPORTS_DIR)) {
+    fs.mkdirSync(REPORTS_DIR, { recursive: true });
+  }
+});
 
 /**
  * Before each scenario: reset response state so no stale data leaks
