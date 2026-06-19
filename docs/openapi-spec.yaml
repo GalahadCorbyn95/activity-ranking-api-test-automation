@@ -1,0 +1,372 @@
+openapi: 3.0.3
+info:
+  title: Activity Ranking API
+  description: |
+    API that provides city search suggestions, weather forecasts, and
+    weather-based activity rankings.
+
+    This spec documents both the current v1 endpoints (as-implemented) and
+    the proposed v2/activities endpoint that aligns with the feature ticket
+    acceptance criteria.
+  version: 2.0.0
+
+servers:
+  - url: https://ibp62gp1b9.execute-api.us-east-1.amazonaws.com
+    description: Production (AWS API Gateway)
+
+paths:
+  # ===========================================================================
+  # v1 Endpoints (current implementation)
+  # ===========================================================================
+
+  /v1/suggest:
+    get:
+      tags: [v1 - City Suggestion]
+      summary: Search for city/town suggestions
+      description: Returns autocomplete suggestions matching the provided query string.
+      parameters:
+        - name: query
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 2
+          description: Partial or full city/town name (minimum 2 characters for results)
+      responses:
+        '200':
+          description: Successful response with matching suggestions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuggestResponse'
+        '400':
+          description: Missing or empty query parameter
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: query required
+
+  /v1/weather:
+    get:
+      tags: [v1 - Weather Forecast]
+      summary: Get 7-day weather forecast
+      description: Returns hourly (168 entries) and daily (7 entries) weather data for the given coordinates.
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          schema:
+            type: number
+            format: float
+          description: Latitude (-90 to 90)
+        - name: lon
+          in: query
+          required: true
+          schema:
+            type: number
+            format: float
+          description: Longitude (-180 to 180)
+      responses:
+        '200':
+          description: Successful 7-day forecast
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeatherResponse'
+        '400':
+          description: Missing lat/lon parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: lat & lon required
+
+  /v1/activities:
+    get:
+      tags: [v1 - Activities (Current)]
+      summary: Get aggregated activity rankings (v1 — current)
+      description: |
+        Returns an aggregated list of 4 activities ranked by weather suitability.
+
+        **Note:** This endpoint does NOT match the feature ticket acceptance criteria.
+        It returns aggregated `score` (0–1) instead of per-day `rank` (1–10) and `reasoning`.
+        See /v2/activities for the proposed corrected endpoint.
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          schema:
+            type: number
+            format: float
+        - name: lon
+          in: query
+          required: true
+          schema:
+            type: number
+            format: float
+      responses:
+        '200':
+          description: Aggregated activity rankings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivitiesV1Response'
+        '400':
+          description: Missing or invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  # ===========================================================================
+  # v2 Endpoint (proposed — aligns with acceptance criteria)
+  # ===========================================================================
+
+  /v2/activities:
+    get:
+      tags: [v2 - Activities (Proposed)]
+      summary: Get per-day activity rankings with reasoning (v2 — proposed)
+      description: |
+        Returns a 7-day activity ranking with per-day granularity, integer ranks (1–10),
+        and human-readable reasoning for each ranking. This endpoint aligns with
+        the feature ticket acceptance criteria.
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          schema:
+            type: number
+            format: float
+        - name: lon
+          in: query
+          required: true
+          schema:
+            type: number
+            format: float
+      responses:
+        '200':
+          description: Per-day activity rankings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivitiesV2Response'
+        '400':
+          description: Missing or invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    # -- Suggest ----------------------------------------------------------------
+
+    SuggestResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/SuggestItem'
+      description: Plain JSON array of matching city suggestions
+
+    SuggestItem:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "2643743-51.50853--0.12574"
+        name:
+          type: string
+          example: London
+        country:
+          type: string
+          example: GB
+        admin1:
+          type: string
+          example: England
+        lat:
+          type: number
+          format: float
+          example: 51.50853
+        lon:
+          type: number
+          format: float
+          example: -0.12574
+        timezone:
+          type: string
+          example: Europe/London
+      required: [id, name, country, admin1, lat, lon, timezone]
+
+    # -- Weather ----------------------------------------------------------------
+
+    WeatherResponse:
+      type: object
+      properties:
+        latitude:
+          type: number
+        longitude:
+          type: number
+        timezone:
+          type: string
+        elevation:
+          type: number
+        hourly_units:
+          type: object
+        hourly:
+          type: object
+          properties:
+            time:
+              type: array
+              items:
+                type: string
+            temperature_2m:
+              type: array
+              items:
+                type: number
+            precipitation:
+              type: array
+              items:
+                type: number
+            weathercode:
+              type: array
+              items:
+                type: number
+            windspeed_10m:
+              type: array
+              items:
+                type: number
+            cloudcover:
+              type: array
+              items:
+                type: number
+            snowfall:
+              type: array
+              items:
+                type: number
+            snow_depth:
+              type: array
+              items:
+                type: number
+        daily_units:
+          type: object
+        daily:
+          type: object
+          properties:
+            time:
+              type: array
+              items:
+                type: string
+            sunrise:
+              type: array
+              items:
+                type: string
+            sunset:
+              type: array
+              items:
+                type: string
+            temperature_2m_max:
+              type: array
+              items:
+                type: number
+            temperature_2m_min:
+              type: array
+              items:
+                type: number
+            precipitation_sum:
+              type: array
+              items:
+                type: number
+
+    # -- Activities v1 (current) ------------------------------------------------
+
+    ActivitiesV1Response:
+      type: object
+      properties:
+        activities:
+          type: array
+          items:
+            type: object
+            properties:
+              activity:
+                type: string
+                enum: [Skiing, Surfing, Outdoor Sightseeing, Indoor Sightseeing]
+              score:
+                type: number
+                format: float
+                minimum: 0
+                maximum: 1
+            required: [activity, score]
+        snapshot:
+          $ref: '#/components/schemas/WeatherSnapshot'
+      required: [activities, snapshot]
+
+    # -- Activities v2 (proposed) -----------------------------------------------
+
+    ActivitiesV2Response:
+      type: object
+      properties:
+        location:
+          type: object
+          properties:
+            latitude:
+              type: number
+            longitude:
+              type: number
+        rankings:
+          type: array
+          minItems: 7
+          maxItems: 7
+          items:
+            type: object
+            properties:
+              date:
+                type: string
+                format: date
+                example: "2026-06-18"
+              activities:
+                type: array
+                minItems: 4
+                maxItems: 4
+                items:
+                  type: object
+                  properties:
+                    activity:
+                      type: string
+                      enum: [Skiing, Surfing, Outdoor Sightseeing, Indoor Sightseeing]
+                    rank:
+                      type: integer
+                      minimum: 1
+                      maximum: 10
+                    reasoning:
+                      type: string
+                      minLength: 1
+                  required: [activity, rank, reasoning]
+            required: [date, activities]
+        snapshot:
+          $ref: '#/components/schemas/WeatherSnapshot'
+      required: [location, rankings]
+
+    # -- Shared -----------------------------------------------------------------
+
+    WeatherSnapshot:
+      type: object
+      properties:
+        avg_temp:
+          type: number
+        max_precip:
+          type: number
+        total_snowfall:
+          type: number
+        avg_cloud:
+          type: number
+        max_wind:
+          type: number
+      required: [avg_temp, max_precip, total_snowfall, avg_cloud, max_wind]
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required: [error]

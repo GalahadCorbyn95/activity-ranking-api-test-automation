@@ -1,0 +1,33 @@
+{
+  "name": "activity-ranking-api-test-automation",
+  "version": "1.0.0",
+  "description": "QA test automation for the Activity Ranking API — BDD scenarios, automated tests, reports, and documentation",
+  "scripts": {
+    "test": "cucumber-js",
+    "test:suggest": "cucumber-js --tags @suggest",
+    "test:weather": "cucumber-js --tags @weather",
+    "test:activities": "cucumber-js --tags @activities",
+    "test:integration": "cucumber-js --tags @integration",
+    "test:smoke": "cucumber-js --tags @smoke",
+    "test:known-failures": "cucumber-js --tags @known-failure",
+    "test:report": "cucumber-js || true && node -r ts-node/register -e \"require('./tests/support/report-generator').generateReport()\"",
+    "report": "node -r ts-node/register -e \"require('./tests/support/report-generator').generateReport()\"",
+    "build": "tsc --noEmit"
+  },
+  "keywords": ["qa", "testing", "bdd", "cucumber", "api-testing"],
+  "author": "Douglas Garcia",
+  "license": "ISC",
+  "dependencies": {
+    "@cucumber/cucumber": "^11.0.0",
+    "axios": "^1.7.0",
+    "chai": "^4.4.0",
+    "dotenv": "^16.4.0",
+    "multiple-cucumber-html-reporter": "^3.7.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.5.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.0",
+    "@types/node": "^22.0.0"
+  }
+}
