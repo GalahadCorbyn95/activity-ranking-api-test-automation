@@ -1,0 +1,4033 @@
+[
+  {
+    "description": "  As a QA engineer reviewing the feature ticket,\n  I want to verify whether the API response matches the acceptance criteria,\n  So that any contract divergences are formally identified and documented.\n\n  IMPORTANT: These scenarios test the contract described in the feature ticket.\n  The current API implementation does NOT meet these criteria.\n  All scenarios in this file are tagged @known-failure and are EXPECTED TO FAIL.\n  See docs/divergence-report.md for the full divergence analysis.\n\n  Acceptance Criteria from Ticket:\n    - The response includes: Date, Activity name, Rank (1–10), Reasoning\n    - It ranks each day for each activity based on weather suitability",
+    "elements": [
+      {
+        "description": "",
+        "id": "activity-ranking-api-—-acceptance-criteria-validation;response-contains-entries-for-each-of-the-7-forecast-days",
+        "keyword": "Scenario",
+        "line": 21,
+        "name": "Response contains entries for each of the 7 forecast days",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1172500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 17,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 757100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 22,
+            "name": "I request activity rankings for latitude -20.71889 and longitude -46.60972",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 621235200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 23,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 570700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 24,
+            "name": "the response should contain activity entries for 7 days",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:140"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 1268999,
+              "error_message": "AssertionError: expected { Object (activities, snapshot) } to have property 'rankings'\n    at CustomWorld.<anonymous> (C:\\Users\\douglas.garcia_omni\\Documents\\activity-ranking-api-test-automation\\tests\\steps\\activities.steps.ts:146:26)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 193699
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@activities",
+            "line": 1
+          },
+          {
+            "name": "@acceptance-criteria",
+            "line": 1
+          },
+          {
+            "name": "@known-failure",
+            "line": 1
+          },
+          {
+            "name": "@divergence",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "activity-ranking-api-—-acceptance-criteria-validation;each-activity-has-a-rank-between-1-and-10",
+        "keyword": "Scenario",
+        "line": 28,
+        "name": "Each activity has a rank between 1 and 10",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 31799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 17,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 89699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 29,
+            "name": "I request activity rankings for latitude -20.71889 and longitude -46.60972",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 188093100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 30,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1154399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 31,
+            "name": "each activity should have a \"rank\" field",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:153"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 1026100,
+              "error_message": "AssertionError: expected { …(2) } to have property 'rank'\n    at CustomWorld.<anonymous> (C:\\Users\\douglas.garcia_omni\\Documents\\activity-ranking-api-test-automation\\tests\\steps\\activities.steps.ts:163:31)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 32,
+            "name": "each activity rank should be an integer between 1 and 10",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:172"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 149599
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@activities",
+            "line": 1
+          },
+          {
+            "name": "@acceptance-criteria",
+            "line": 1
+          },
+          {
+            "name": "@known-failure",
+            "line": 1
+          },
+          {
+            "name": "@divergence",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "activity-ranking-api-—-acceptance-criteria-validation;each-activity-includes-a-reasoning-field",
+        "keyword": "Scenario",
+        "line": 36,
+        "name": "Each activity includes a reasoning field",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 40700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 17,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 146999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 37,
+            "name": "I request activity rankings for latitude -20.71889 and longitude -46.60972",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 163572700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 38,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 636899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "each activity should have a \"reasoning\" field",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:153"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 594600,
+              "error_message": "AssertionError: expected { …(2) } to have property 'reasoning'\n    at CustomWorld.<anonymous> (C:\\Users\\douglas.garcia_omni\\Documents\\activity-ranking-api-test-automation\\tests\\steps\\activities.steps.ts:163:31)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "each reasoning should be a non-empty string",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:186"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 129899
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@activities",
+            "line": 1
+          },
+          {
+            "name": "@acceptance-criteria",
+            "line": 1
+          },
+          {
+            "name": "@known-failure",
+            "line": 1
+          },
+          {
+            "name": "@divergence",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "activity-ranking-api-—-acceptance-criteria-validation;response-includes-date-field-for-each-activity-ranking",
+        "keyword": "Scenario",
+        "line": 43,
+        "name": "Response includes date field for each activity ranking",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 80399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 17,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 139699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 44,
+            "name": "I request activity rankings for latitude -20.71889 and longitude -46.60972",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 207318700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 45,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 159700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 46,
+            "name": "each activity entry should have a \"date\" field",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:198"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 481600,
+              "error_message": "AssertionError: expected { …(2) } to have property 'date'\n    at CustomWorld.<anonymous> (C:\\Users\\douglas.garcia_omni\\Documents\\activity-ranking-api-test-automation\\tests\\steps\\activities.steps.ts:204:29)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 47,
+            "name": "each date should be a valid ISO date string",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:210"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 94699
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@activities",
+            "line": 1
+          },
+          {
+            "name": "@acceptance-criteria",
+            "line": 1
+          },
+          {
+            "name": "@known-failure",
+            "line": 1
+          },
+          {
+            "name": "@divergence",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "activity-ranking-api-—-acceptance-criteria-validation",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Activity Ranking API — Acceptance Criteria Validation",
+    "tags": [
+      {
+        "name": "@activities",
+        "line": 1
+      },
+      {
+        "name": "@acceptance-criteria",
+        "line": 1
+      },
+      {
+        "name": "@known-failure",
+        "line": 1
+      },
+      {
+        "name": "@divergence",
+        "line": 1
+      }
+    ],
+    "uri": "features\\activities\\activities-acceptance.feature"
+  },
+  {
+    "description": "  As a QA engineer,\n  I want to verify the activities API handles invalid inputs correctly,\n  So that consumers receive meaningful error responses.",
+    "elements": [
+      {
+        "description": "",
+        "id": "activity-ranking-api-—-error-handling-and-edge-cases;missing-lat-and-lon-returns-400-error",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "Missing lat and lon returns 400 error",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 28299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 116199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I request activity rankings without any parameters",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 185841500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "the response status should be 400",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 195799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the response error message should be \"lat & lon required\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:140"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 242299
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 35999
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@activities",
+            "line": 1
+          },
+          {
+            "name": "@negative",
+            "line": 1
+          },
+          {
+            "name": "@edge-case",
+            "line": 11
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "activity-ranking-api-—-error-handling-and-edge-cases;invalid-coordinates-return-an-error",
+        "keyword": "Scenario",
+        "line": 19,
+        "name": "Invalid coordinates return an error",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 28299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 77999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "I request activity rankings for latitude 999.0 and longitude 999.0",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 692944199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "the response should indicate an activities failure",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:125"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 521600
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 25300
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@activities",
+            "line": 1
+          },
+          {
+            "name": "@negative",
+            "line": 1
+          },
+          {
+            "name": "@edge-case",
+            "line": 18
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "activity-ranking-api-—-error-handling-and-edge-cases;missing-lat-parameter-returns-error",
+        "keyword": "Scenario",
+        "line": 25,
+        "name": "Missing lat parameter returns error",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 53099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 71500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 26,
+            "name": "I request activity rankings with only longitude -46.60972",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 181115499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "the response status should be 400",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 226000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 44800
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@activities",
+            "line": 1
+          },
+          {
+            "name": "@negative",
+            "line": 1
+          },
+          {
+            "name": "@edge-case",
+            "line": 24
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "activity-ranking-api-—-error-handling-and-edge-cases;missing-lon-parameter-returns-error",
+        "keyword": "Scenario",
+        "line": 31,
+        "name": "Missing lon parameter returns error",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 27599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 109600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 32,
+            "name": "I request activity rankings with only latitude -20.71889",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:39"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 172602699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 33,
+            "name": "the response status should be 400",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 124900
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11999
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@activities",
+            "line": 1
+          },
+          {
+            "name": "@negative",
+            "line": 1
+          },
+          {
+            "name": "@edge-case",
+            "line": 30
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "activity-ranking-api-—-error-handling-and-edge-cases",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Activity Ranking API — Error Handling and Edge Cases",
+    "tags": [
+      {
+        "name": "@activities",
+        "line": 1
+      },
+      {
+        "name": "@negative",
+        "line": 1
+      }
+    ],
+    "uri": "features\\activities\\activities-errors.feature"
+  },
+  {
+    "description": "  As a user viewing activity rankings,\n  I want to receive a ranked list of activities based on weather conditions,\n  So that I can plan my trip accordingly.\n\n  Note: These tests validate the ACTUAL API behavior (aggregated scores),\n  which differs from the acceptance criteria in the feature ticket.\n  See docs/divergence-report.md for details.",
+    "elements": [
+      {
+        "description": "",
+        "id": "activity-ranking-api-—-successful-requests-(real-behavior);valid-coordinates-return-exactly-4-activities",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "Valid coordinates return exactly 4 activities",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 18399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 55299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 17,
+            "name": "I request activity rankings for latitude -20.71889 and longitude -46.60972",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 167565900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 116599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "the response should contain exactly 4 activities",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 346999
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 23900
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@activities",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          },
+          {
+            "name": "@smoke",
+            "line": 15
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "activity-ranking-api-—-successful-requests-(real-behavior);activities-include-all-expected-types",
+        "keyword": "Scenario",
+        "line": 22,
+        "name": "Activities include all expected types",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 63799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 62500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 23,
+            "name": "I request activity rankings for latitude -20.71889 and longitude -46.60972",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 194238400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 24,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 147399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "the activities should include \"Skiing\"",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:62"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 211199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 26,
+            "name": "the activities should include \"Surfing\"",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:62"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 87799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 27,
+            "name": "the activities should include \"Outdoor Sightseeing\"",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:62"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 68400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 28,
+            "name": "the activities should include \"Indoor Sightseeing\"",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:62"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 100599
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15899
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@activities",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "activity-ranking-api-—-successful-requests-(real-behavior);each-activity-has-a-score-between-0-and-1",
+        "keyword": "Scenario",
+        "line": 31,
+        "name": "Each activity has a score between 0 and 1",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 70499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 32,
+            "name": "I request activity rankings for latitude -20.71889 and longitude -46.60972",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 181853900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 33,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 116199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 34,
+            "name": "each activity score should be between 0 and 1",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:72"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 713499
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11500
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@activities",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "activity-ranking-api-—-successful-requests-(real-behavior);response-includes-snapshot-with-weather-summary-fields",
+        "keyword": "Scenario",
+        "line": 37,
+        "name": "Response includes snapshot with weather summary fields",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 70899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I request activity rankings for latitude -20.71889 and longitude -46.60972",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 168481200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 39,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 300500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "the snapshot should contain avg_temp, max_precip, total_snowfall, avg_cloud, max_wind",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:83"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 688299
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11799
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@activities",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "activity-ranking-api-—-successful-requests-(real-behavior);activities-are-sorted-by-score-in-descending-order",
+        "keyword": "Scenario",
+        "line": 43,
+        "name": "Activities are sorted by score in descending order",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 46100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 44,
+            "name": "I request activity rankings for latitude -20.71889 and longitude -46.60972",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 179890599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 45,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 209300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 46,
+            "name": "activities should be sorted by score in descending order",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 241799
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 14799
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@activities",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "activity-ranking-api-—-successful-requests-(real-behavior);snapshot-values-are-numerically-plausible",
+        "keyword": "Scenario",
+        "line": 49,
+        "name": "Snapshot values are numerically plausible",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 47399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 50,
+            "name": "I request activity rankings for latitude -20.71889 and longitude -46.60972",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 166677999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 51,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 154999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 52,
+            "name": "the snapshot avg_temp should be between -60 and 60",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:107"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 167699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 53,
+            "name": "the snapshot max_wind should be a non-negative number",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:116"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 120799
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11199
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@activities",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "activity-ranking-api-—-successful-requests-(real-behavior)",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Activity Ranking API — Successful Requests (Real Behavior)",
+    "tags": [
+      {
+        "name": "@activities",
+        "line": 1
+      },
+      {
+        "name": "@positive",
+        "line": 1
+      }
+    ],
+    "uri": "features\\activities\\activities-success.feature"
+  },
+  {
+    "description": "  As a user of the Activity Ranking system,\n  I want to search for a city, get its weather, and see ranked activities,\n  So that the full user journey works seamlessly from search to results.",
+    "elements": [
+      {
+        "description": "",
+        "id": "end-to-end-flow-—-city-search-to-activity-ranking;full-flow-from-city-search-to-activity-ranking",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "Full flow from city search to activity ranking",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 55100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I search for city suggestions with query \"London\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 179138299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 115600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the suggestions list should not be empty",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:68"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 277699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 16,
+            "name": "I select the first suggestion and store its coordinates",
+            "match": {
+              "location": "tests\\steps\\integration.steps.ts:15"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 136099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "I request weather data using the stored coordinates",
+            "match": {
+              "location": "tests\\steps\\integration.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 299646800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 106899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "the daily data should contain exactly 7 entries",
+            "match": {
+              "location": "tests\\steps\\weather.steps.ts:51"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 243899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "I request activity rankings using the stored coordinates",
+            "match": {
+              "location": "tests\\steps\\integration.steps.ts:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 357692100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 117699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "the response should contain exactly 4 activities",
+            "match": {
+              "location": "tests\\steps\\activities.steps.ts:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 178599
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 14199
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@integration",
+            "line": 1
+          },
+          {
+            "name": "@e2e",
+            "line": 1
+          },
+          {
+            "name": "@smoke",
+            "line": 11
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "end-to-end-flow-—-city-search-to-activity-ranking;suggest-result-coordinates-are-valid-for-downstream-apis",
+        "keyword": "Scenario",
+        "line": 25,
+        "name": "Suggest result coordinates are valid for downstream APIs",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 53899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 26,
+            "name": "I search for city suggestions with query \"Berlin\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 187184800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 27,
+            "name": "I select the first suggestion and store its coordinates",
+            "match": {
+              "location": "tests\\steps\\integration.steps.ts:15"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 141899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 28,
+            "name": "the stored latitude should be between -90 and 90",
+            "match": {
+              "location": "tests\\steps\\integration.steps.ts:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 139099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 29,
+            "name": "the stored longitude should be between -180 and 180",
+            "match": {
+              "location": "tests\\steps\\integration.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 101700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 30,
+            "name": "I request weather data using the stored coordinates",
+            "match": {
+              "location": "tests\\steps\\integration.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 293514699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 31,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 128099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 32,
+            "name": "I request activity rankings using the stored coordinates",
+            "match": {
+              "location": "tests\\steps\\integration.steps.ts:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 279067900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 33,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 121599
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10800
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@integration",
+            "line": 1
+          },
+          {
+            "name": "@e2e",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "end-to-end-flow-—-city-search-to-activity-ranking",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "End-to-End Flow — City Search to Activity Ranking",
+    "tags": [
+      {
+        "name": "@integration",
+        "line": 1
+      },
+      {
+        "name": "@e2e",
+        "line": 1
+      }
+    ],
+    "uri": "features\\integration\\end-to-end-flow.feature"
+  },
+  {
+    "description": "  As a QA engineer,\n  I want to verify the API handles invalid inputs gracefully,\n  So that the system remains robust under unexpected usage.",
+    "elements": [
+      {
+        "description": "",
+        "id": "city-suggestion-api-—-error-handling-and-edge-cases;empty-query-parameter-returns-400-error",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "Empty query parameter returns 400 error",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 8100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 44499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I search for city suggestions with an empty query",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:37"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 175023500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "the response status should be 400",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 152600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the response error message should be \"query required\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:140"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 124899
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 13799
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@suggest",
+            "line": 1
+          },
+          {
+            "name": "@negative",
+            "line": 1
+          },
+          {
+            "name": "@edge-case",
+            "line": 11
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "city-suggestion-api-—-error-handling-and-edge-cases;missing-query-parameter-returns-400-error",
+        "keyword": "Scenario",
+        "line": 19,
+        "name": "Missing query parameter returns 400 error",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 69700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "I search for city suggestions without query parameter",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 175015800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "the response status should be 400",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 107299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "the response error message should be \"query required\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:140"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 73499
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 8399
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@suggest",
+            "line": 1
+          },
+          {
+            "name": "@negative",
+            "line": 1
+          },
+          {
+            "name": "@edge-case",
+            "line": 18
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "city-suggestion-api-—-error-handling-and-edge-cases;non-existent-city-returns-empty-results",
+        "keyword": "Scenario",
+        "line": 25,
+        "name": "Non-existent city returns empty results",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 36600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 26,
+            "name": "I search for city suggestions with query \"xyznonexistent99\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 171272600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 203299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 28,
+            "name": "the suggestions list should be empty",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 313000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 20700
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@suggest",
+            "line": 1
+          },
+          {
+            "name": "@negative",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "city-suggestion-api-—-error-handling-and-edge-cases;single-character-query-returns-empty-results",
+        "keyword": "Scenario",
+        "line": 32,
+        "name": "Single character query returns empty results",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 21899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 68100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 33,
+            "name": "I search for city suggestions with query \"a\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 161785199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 34,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 138899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 35,
+            "name": "the suggestions list should be empty",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 199099
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 13600
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@suggest",
+            "line": 1
+          },
+          {
+            "name": "@negative",
+            "line": 1
+          },
+          {
+            "name": "@edge-case",
+            "line": 31
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "city-suggestion-api-—-error-handling-and-edge-cases;special-characters-in-query-are-handled-gracefully",
+        "keyword": "Scenario",
+        "line": 39,
+        "name": "Special characters in query are handled gracefully",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 56899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I search for city suggestions with query \"!@#$%\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 178339999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 432999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 42,
+            "name": "the suggestions list should be empty",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 235099
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 21099
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@suggest",
+            "line": 1
+          },
+          {
+            "name": "@negative",
+            "line": 1
+          },
+          {
+            "name": "@edge-case",
+            "line": 38
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "city-suggestion-api-—-error-handling-and-edge-cases",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "City Suggestion API — Error Handling and Edge Cases",
+    "tags": [
+      {
+        "name": "@suggest",
+        "line": 1
+      },
+      {
+        "name": "@negative",
+        "line": 1
+      }
+    ],
+    "uri": "features\\suggest\\suggest-errors.feature"
+  },
+  {
+    "description": "  As a user searching for a city,\n  I want to receive autocomplete suggestions as I type,\n  So that I can quickly find and select the correct city.",
+    "elements": [
+      {
+        "description": "",
+        "id": "city-suggestion-api-—-successful-requests;search-with-exact-city-name-returns-matching-results",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "Search with exact city name returns matching results",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 30500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 109899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I search for city suggestions with query \"Votuporanga\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 181611600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 262800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the suggestions list should not be empty",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:68"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 232199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "at least one suggestion should have the name \"Votuporanga\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:95"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 393599
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 27599
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@suggest",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          },
+          {
+            "name": "@smoke",
+            "line": 11
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "city-suggestion-api-—-successful-requests;partial-query-returns-autocomplete-suggestions",
+        "keyword": "Scenario",
+        "line": 19,
+        "name": "Partial query returns autocomplete suggestions",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 21899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 101399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "I search for city suggestions with query \"lon\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 162072799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 222700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "the suggestions list should not be empty",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:68"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 213400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 23,
+            "name": "at least one suggestion should have the name \"London\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:95"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 148299
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 20000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@suggest",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "city-suggestion-api-—-successful-requests;each-suggestion-contains-all-required-fields",
+        "keyword": "Scenario",
+        "line": 26,
+        "name": "Each suggestion contains all required fields",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 16899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 63599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 27,
+            "name": "I search for city suggestions with query \"Paris\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 190746299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 28,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 147300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 29,
+            "name": "each suggestion should have the fields: id, name, country, admin1, lat, lon, timezone",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:107"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2452499
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 15300
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@suggest",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "city-suggestion-api-—-successful-requests;suggestion-coordinates-are-within-valid-geographic-ranges",
+        "keyword": "Scenario",
+        "line": 32,
+        "name": "Suggestion coordinates are within valid geographic ranges",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 60899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 33,
+            "name": "I search for city suggestions with query \"Tokyo\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 170200799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 34,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 105299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 35,
+            "name": "each suggestion latitude should be between -90 and 90",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:118"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 336499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 36,
+            "name": "each suggestion longitude should be between -180 and 180",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:129"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 328199
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 16900
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@suggest",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "city-suggestion-api-—-successful-requests;valid-query-returns-a-non-empty-array-of-suggestions",
+        "keyword": "Scenario",
+        "line": 39,
+        "name": "Valid query returns a non-empty array of suggestions",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 16299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 82999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "I search for city suggestions with query \"New\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 173907499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 116299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 42,
+            "name": "the suggestions list should not be empty",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:68"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 93500
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9500
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@suggest",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "city-suggestion-api-—-successful-requests;multiple-valid-cities-return-results",
+        "keyword": "Scenario Outline",
+        "line": 52,
+        "name": "Multiple valid cities return results",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 8199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 45300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 46,
+            "name": "I search for city suggestions with query \"London\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 170497199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 47,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 188299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 48,
+            "name": "the suggestions list should not be empty",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:68"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 143799
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 17699
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@suggest",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "city-suggestion-api-—-successful-requests;multiple-valid-cities-return-results",
+        "keyword": "Scenario Outline",
+        "line": 53,
+        "name": "Multiple valid cities return results",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 177200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 93999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 46,
+            "name": "I search for city suggestions with query \"São Paulo\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 188765299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 47,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 110199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 48,
+            "name": "the suggestions list should not be empty",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:68"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 95900
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 16299
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@suggest",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "city-suggestion-api-—-successful-requests;multiple-valid-cities-return-results",
+        "keyword": "Scenario Outline",
+        "line": 54,
+        "name": "Multiple valid cities return results",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 44900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 46,
+            "name": "I search for city suggestions with query \"New York\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 182314300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 47,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 413200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 48,
+            "name": "the suggestions list should not be empty",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:68"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 239999
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 33599
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@suggest",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "city-suggestion-api-—-successful-requests;multiple-valid-cities-return-results",
+        "keyword": "Scenario Outline",
+        "line": 55,
+        "name": "Multiple valid cities return results",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 21099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 209499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 46,
+            "name": "I search for city suggestions with query \"Berlin\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 197616299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 47,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 110500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 48,
+            "name": "the suggestions list should not be empty",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:68"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 111799
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12300
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@suggest",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "city-suggestion-api-—-successful-requests;multiple-valid-cities-return-results",
+        "keyword": "Scenario Outline",
+        "line": 56,
+        "name": "Multiple valid cities return results",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 59199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 46,
+            "name": "I search for city suggestions with query \"Sydney\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 168083499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 47,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 207999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 48,
+            "name": "the suggestions list should not be empty",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:68"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 187299
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 20399
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@suggest",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "city-suggestion-api-—-successful-requests",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "City Suggestion API — Successful Requests",
+    "tags": [
+      {
+        "name": "@suggest",
+        "line": 1
+      },
+      {
+        "name": "@positive",
+        "line": 1
+      }
+    ],
+    "uri": "features\\suggest\\suggest-success.feature"
+  },
+  {
+    "description": "  As a QA engineer,\n  I want to verify the weather API handles missing or invalid parameters correctly,\n  So that consumers receive clear error messages.",
+    "elements": [
+      {
+        "description": "",
+        "id": "weather-forecast-api-—-error-handling-and-edge-cases;missing-lat-and-lon-returns-400-error",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "Missing lat and lon returns 400 error",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 29700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 93600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I request weather data without any parameters",
+            "match": {
+              "location": "tests\\steps\\weather.steps.ts:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 186831299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "the response status should be 400",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 147400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the response error message should be \"lat & lon required\"",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:140"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 126299
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10800
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@weather",
+            "line": 1
+          },
+          {
+            "name": "@negative",
+            "line": 1
+          },
+          {
+            "name": "@edge-case",
+            "line": 11
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "weather-forecast-api-—-error-handling-and-edge-cases;missing-lat-parameter-returns-error",
+        "keyword": "Scenario",
+        "line": 19,
+        "name": "Missing lat parameter returns error",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 8800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 42200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "I request weather data with only longitude -46.60972",
+            "match": {
+              "location": "tests\\steps\\weather.steps.ts:29"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 162539500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "the response status should be 400",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 128899
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@weather",
+            "line": 1
+          },
+          {
+            "name": "@negative",
+            "line": 1
+          },
+          {
+            "name": "@edge-case",
+            "line": 18
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "weather-forecast-api-—-error-handling-and-edge-cases;missing-lon-parameter-returns-error",
+        "keyword": "Scenario",
+        "line": 25,
+        "name": "Missing lon parameter returns error",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 47499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 26,
+            "name": "I request weather data with only latitude -20.71889",
+            "match": {
+              "location": "tests\\steps\\weather.steps.ts:38"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 160958000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "the response status should be 400",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 424500
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 28500
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@weather",
+            "line": 1
+          },
+          {
+            "name": "@negative",
+            "line": 1
+          },
+          {
+            "name": "@edge-case",
+            "line": 24
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "weather-forecast-api-—-error-handling-and-edge-cases",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Weather Forecast API — Error Handling and Edge Cases",
+    "tags": [
+      {
+        "name": "@weather",
+        "line": 1
+      },
+      {
+        "name": "@negative",
+        "line": 1
+      }
+    ],
+    "uri": "features\\weather\\weather-errors.feature"
+  },
+  {
+    "description": "  As a user who selected a city,\n  I want to receive a 7-day weather forecast for that location,\n  So that the system can rank activities based on weather conditions.",
+    "elements": [
+      {
+        "description": "",
+        "id": "weather-forecast-api-—-successful-requests;valid-coordinates-return-a-7-day-weather-forecast",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "Valid coordinates return a 7-day weather forecast",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 16100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 106499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I request weather data for latitude -20.71889 and longitude -46.60972",
+            "match": {
+              "location": "tests\\steps\\weather.steps.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 174964500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 693799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the daily data should contain exactly 7 entries",
+            "match": {
+              "location": "tests\\steps\\weather.steps.ts:51"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 206200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "the hourly data should contain exactly 168 entries",
+            "match": {
+              "location": "tests\\steps\\weather.steps.ts:64"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 231499
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12800
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@weather",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          },
+          {
+            "name": "@smoke",
+            "line": 11
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "weather-forecast-api-—-successful-requests;response-includes-all-expected-hourly-data-fields",
+        "keyword": "Scenario",
+        "line": 19,
+        "name": "Response includes all expected hourly data fields",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 50699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "I request weather data for latitude -20.71889 and longitude -46.60972",
+            "match": {
+              "location": "tests\\steps\\weather.steps.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 173106799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 167099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "the hourly data should include fields: time, temperature_2m, precipitation, weathercode, windspeed_10m, cloudcover, snowfall, snow_depth",
+            "match": {
+              "location": "tests\\steps\\weather.steps.ts:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 478399
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12200
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@weather",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "weather-forecast-api-—-successful-requests;response-includes-all-expected-daily-data-fields",
+        "keyword": "Scenario",
+        "line": 25,
+        "name": "Response includes all expected daily data fields",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 10700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 541799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 26,
+            "name": "I request weather data for latitude -20.71889 and longitude -46.60972",
+            "match": {
+              "location": "tests\\steps\\weather.steps.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 238480099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 115999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 28,
+            "name": "the daily data should include fields: time, sunrise, sunset, temperature_2m_max, temperature_2m_min, precipitation_sum",
+            "match": {
+              "location": "tests\\steps\\weather.steps.ts:92"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 388000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 12299
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@weather",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "weather-forecast-api-—-successful-requests;response-includes-geographic-metadata",
+        "keyword": "Scenario",
+        "line": 31,
+        "name": "Response includes geographic metadata",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 8300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 42400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 32,
+            "name": "I request weather data for latitude -20.71889 and longitude -46.60972",
+            "match": {
+              "location": "tests\\steps\\weather.steps.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 177991299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 33,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 202099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 34,
+            "name": "the response should include timezone information",
+            "match": {
+              "location": "tests\\steps\\weather.steps.ts:107"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 707300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 35,
+            "name": "the response should include an elevation value",
+            "match": {
+              "location": "tests\\steps\\weather.steps.ts:117"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 261699
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 16900
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@weather",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "weather-forecast-api-—-successful-requests;hourly-units-describe-correct-measurement-types",
+        "keyword": "Scenario",
+        "line": 38,
+        "name": "Hourly units describe correct measurement types",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 624599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 113100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 39,
+            "name": "I request weather data for latitude -20.71889 and longitude -46.60972",
+            "match": {
+              "location": "tests\\steps\\weather.steps.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 182473200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 152500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "the hourly time unit should be \"iso8601\"",
+            "match": {
+              "location": "tests\\steps\\weather.steps.ts:126"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 204799
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 11800
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@weather",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "weather-forecast-api-—-successful-requests;daily-time-entries-are-valid-iso-date-strings",
+        "keyword": "Scenario",
+        "line": 44,
+        "name": "Daily time entries are valid ISO date strings",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 9299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the Activity Ranking API is available",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 52799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 45,
+            "name": "I request weather data for latitude -20.71889 and longitude -46.60972",
+            "match": {
+              "location": "tests\\steps\\weather.steps.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 177898999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 46,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\steps\\suggest.steps.ts:60"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 169399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 47,
+            "name": "each daily time entry should be a valid date string",
+            "match": {
+              "location": "tests\\steps\\weather.steps.ts:135"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 406500
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 16999
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@weather",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "weather-forecast-api-—-successful-requests",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Weather Forecast API — Successful Requests",
+    "tags": [
+      {
+        "name": "@weather",
+        "line": 1
+      },
+      {
+        "name": "@positive",
+        "line": 1
+      }
+    ],
+    "uri": "features\\weather\\weather-success.feature"
+  }
+]
